@@ -1,6 +1,6 @@
 <template>
   <div>
-    Login / Logout<br>
+    Login / Logout <br>
     <button @click="login()">Login</button>
 
     <button @click="logout()">Logout</button>
@@ -10,13 +10,22 @@
     <button @click="getCourses()">Get Courses</button>
     <button @click="getLecturers()">Get Lecturers</button>
     <button @click="getEnrolments()">Get Enrolments</button>
+    <br><br>
 
     <ul>
-      <li v-for="course in courses"> {{ course.id + " " + course.title }} </li>
-      <li v-for="lecturer in lecturers"> {{ lecturer.id + " " + lecturer.name }} </li>
-      <li v-for="enrolment in enrolments"> {{ enrolment.id + " " + enrolment.date }} </li>
+      <li v-for="course in courses"> {{ "ID: " + course.id + " | " + "Title: " + course.title }}
+        <button @click="dropCourse()">Delete</button>
+        <button>Edit</button> 
+      </li>
+      <li v-for="lecturer in lecturers"> {{ "ID: " + lecturer.id + " | " + "Name: " + lecturer.name }}
+        <button>Delete</button>
+        <button>Edit</button>
+      </li>
+      <li v-for="enrolment in enrolments"> {{ "ID: " + enrolment.id + " | " + "Date: " + enrolment.date }}
+        <button>Delete</button>
+        <button>Edit</button>
+      </li>
     </ul>
-
   </div>
 </template>
 
@@ -84,6 +93,17 @@
       });
     },
 
+    // Failed attempt at creating a Delete button
+
+    // dropCourse() {
+    //   let app = this;
+    //   let token = localStorage.getItem('token');
+    //   function destroy($id) {
+    //     courses destroy($id);
+    //     return response()->json(['message'=>'course deleted successfully']);
+    //   }
+    // },
+
     // Using axios, connects to lecturers url, gives it a header using Auth,
     // gives it the token, displaying the response or displaying an error -->
 
@@ -143,4 +163,7 @@
 </script>
 
 <style>
+  .example {
+    text-align: center;
+  }
 </style>
